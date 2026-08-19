@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>XYZ AI — School Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=contacts-20260819" />
+</head>
+<body>
+<div id="app-shell">
+
+  <!-- ===================== LOGIN ===================== -->
+  <div id="screen-login">
+    <select id="lang-select-login" class="lang-select lang-picker-login"></select>
+
+    <div class="login-inner">
+      <div class="login-hero">
+        <div class="login-brand">
+          <svg class="brand-mark" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="46" fill="#16233d"/>
+            <circle cx="50" cy="50" r="30" fill="url(#g1)"/>
+            <defs>
+              <radialGradient id="g1" cx="0.35" cy="0.3" r="0.8">
+                <stop offset="0%" stop-color="#7fa6ff"/>
+                <stop offset="60%" stop-color="#1a56db"/>
+                <stop offset="100%" stop-color="#003fb1"/>
+              </radialGradient>
+            </defs>
+          </svg>
+          <h1 data-i18n="appName">XYZ AI</h1>
+          <p data-i18n="appTagline">Your school, one conversation away</p>
+        </div>
+        <ul class="login-hero-points">
+          <li data-i18n="heroPoint1">Chat, voice or avatar — however you'd rather talk</li>
+          <li data-i18n="heroPoint2">Built for students, parents, teachers and principals</li>
+          <li data-i18n="heroPoint3">Escalate to a real teacher whenever you need one</li>
+        </ul>
+      </div>
+
+      <div class="card login-card">
+        <div class="field">
+          <label data-i18n="email">Email</label>
+          <input type="email" id="login-email" placeholder="parent@example.com" autocomplete="username" />
+        </div>
+        <div class="field">
+          <label data-i18n="password">Password</label>
+          <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+        <button class="btn-primary" id="login-btn" data-i18n="signIn">Sign in</button>
+        <div id="login-error"></div>
+
+        <div class="demo-accounts">
+          <p data-i18n="tryDemo">Try a demo account</p>
+          <div class="demo-chips">
+            <button class="demo-chip" data-role="student" data-i18n="roleStudent">Student</button>
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== APP ===================== -->
+  <div id="screen-app" class="hidden">
+
+    <!-- desktop / tablet sidebar -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <svg class="brand-mark-sm" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="46" fill="#16233d"/>
+          <circle cx="50" cy="50" r="30" fill="url(#g1s)"/>
+          <defs>
+            <radialGradient id="g1s" cx="0.35" cy="0.3" r="0.8">
+              <stop offset="0%" stop-color="#7fa6ff"/>
+              <stop offset="60%" stop-color="#1a56db"/>
+              <stop offset="100%" stop-color="#003fb1"/>
+            </radialGradient>
+          </defs>
+        </svg>
+        <span data-i18n="appName">XYZ AI</span>
+      </div>
+
+      <div class="sidebar-nav">
+        <button class="nav-btn side-nav-btn active" data-view="home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+          <span data-i18n="home">Home</span>
+        </button>
+        <button class="nav-btn side-nav-btn" data-view="chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-1 4.1 8.5 8.5 0 0 1-7.6 4.6 8.4 8.4 0 0 1-4.1-1L3 21l1.8-5.3a8.4 8.4 0 0 1-1-4.2 8.5 8.5 0 0 1 4.6-7.6 8.4 8.4 0 0 1 4.1-1h.5a8.48 8.48 0 0 1 8 8v.6z"/></svg>
+          <span data-i18n="chat">Chat</span>
+        </button>
+        <button class="nav-btn side-nav-btn" data-view="profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          <span data-i18n="profile">Profile</span>
+        </button>
+      </div>
+
+      <div class="sidebar-footer">
+        <select id="lang-select-sidebar" class="lang-select lang-select-sidebar"></select>
+        <div class="who sidebar-who">
+          <div class="initials" id="user-initials-side">?</div>
+          <div>
+            <div class="name" id="user-name-side">—</div>
+            <div class="role" id="user-role-side">—</div>
+          </div>
+        </div>
+        <button class="btn-secondary sidebar-signout" id="logout-btn-side" data-i18n="signOut">Sign out</button>
+      </div>
+    </nav>
+
+    <div class="content-col">
+      <div class="topbar">
+        <div class="who">
+          <div class="initials" id="user-initials">?</div>
+          <div>
+            <div class="name" id="user-name">—</div>
+            <div class="role" id="user-role">—</div>
+          </div>
+        </div>
+        <select id="lang-select-app" class="lang-select"></select>
+      </div>
+
+      <div class="views">
+
+        <!-- ---- HOME (role-specific content injected) ---- -->
+        <div class="view active" id="view-home">
+          <h2 data-i18n="home">Home</h2>
+          <div id="home-content"></div>
+        </div>
+
+        <!-- ---- CHAT ---- -->
+        <div class="view" id="view-chat">
+          <h2 data-i18n="chat">Chat</h2>
+          <div class="chat-panel">
+            <div class="chat-thread" id="chat-thread"></div>
+
+            <!-- chat dock: avatar + mic + input -->
+            <div class="chat-dock" id="chat-dock">
+              <div class="chat-quick-actions" id="chat-actions"></div>
+              <div class="avatar-orb-wrap">
+                <div class="avatar-orb" id="avatar-orb">
+                  <div class="ring"></div>
+                  <svg class="avatar-face" viewBox="0 0 100 100" aria-hidden="true">
+                    <defs>
+                      <radialGradient id="skinGrad" cx="42%" cy="32%" r="75%">
+                        <stop offset="0%" stop-color="#ffe3c6"></stop>
+                        <stop offset="100%" stop-color="#eeb488"></stop>
+                      </radialGradient>
+                      <linearGradient id="hairGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#4a3628"></stop>
+                        <stop offset="100%" stop-color="#2b1e16"></stop>
+                      </linearGradient>
+                    </defs>
+
+                    <!-- fixed anchor: neck + persona-tinted collar (does not move with the head) -->
+                    <rect class="neck" x="42" y="78" width="16" height="16" rx="6"></rect>
+                    <path class="collar" d="M18 100 Q50 78 82 100 L82 108 L18 108 Z"></path>
+
+                    <!-- the whole head moves as one rigid group: idle sway, listening tilt, speaking nod, thinking tilt -->
+                    <g id="avatar-head" class="avatar-head">
+                      <path class="face-shape" d="M50 9 C29 9 17 31 17 55 C17 79 30 91 50 91 C70 91 83 79 83 55 C83 31 71 9 50 9 Z"></path>
+                      <path class="hair" d="M50 5 C25 5 13 27 14 49 C20 39 27 29 33 25 C38 33 44 19 50 17 C56 19 62 33 67 25 C73 29 80 39 86 49 C87 27 75 5 50 5 Z"></path>
+                      <ellipse class="ear ear-l" cx="17" cy="56" rx="4" ry="7"></ellipse>
+                      <ellipse class="ear ear-r" cx="83" cy="56" rx="4" ry="7"></ellipse>
+
+                      <path class="brow brow-l" id="avatar-brow-l" d="M27 44 Q36 39 45 44"></path>
+                      <path class="brow brow-r" id="avatar-brow-r" d="M55 44 Q64 39 73 44"></path>
+
+                      <g class="eye eye-l">
+                        <ellipse class="eye-white" cx="36" cy="50" rx="6" ry="4.5"></ellipse>
+                        <circle class="iris" cx="36" cy="50" r="2.7"></circle>
+                        <circle class="pupil" cx="36" cy="50" r="1.1"></circle>
+                        <circle class="eye-highlight" cx="34.4" cy="48.6" r="0.8"></circle>
+                      </g>
+                      <g class="eye eye-r">
+                        <ellipse class="eye-white" cx="64" cy="50" rx="6" ry="4.5"></ellipse>
+                        <circle class="iris" cx="64" cy="50" r="2.7"></circle>
+                        <circle class="pupil" cx="64" cy="50" r="1.1"></circle>
+                        <circle class="eye-highlight" cx="62.4" cy="48.6" r="0.8"></circle>
+                      </g>
+
+                      <path class="nose" d="M49 51 Q47 58 45 61 Q50 64 55 61 Q53 58 51 51 Z"></path>
+
+                      <ellipse class="cheek cheek-l" cx="30" cy="64" rx="6" ry="3.5"></ellipse>
+                      <ellipse class="cheek cheek-r" cx="70" cy="64" rx="6" ry="3.5"></ellipse>
+
+                      <path class="mouth" id="avatar-mouth" d="M34 72 Q50 75 66 72"></path>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div class="chat-input-row">
+                <button class="round-btn mic" id="mic-btn" aria-label="Voice input">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
+                </button>
+                <input type="text" id="chat-input" data-i18n-placeholder="typeMessage" placeholder="Type a message…" />
+                <button class="round-btn send" id="send-btn" aria-label="Send">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+                </button>
+              </div>
+              <button class="chip-btn" id="conversation-btn" data-i18n="liveConversation">Live conversation</button>
+              <div class="voice-hint" id="voice-hint" data-i18n="tapMicHint">Tap the mic and speak</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- PROFILE ---- -->
+        <div class="view" id="view-profile">
+          <h2 data-i18n="profile">Profile</h2>
+          <div class="card profile-card">
+            <div class="profile-avatar" id="profile-initials">?</div>
+            <div class="n" id="profile-name">—</div>
+            <div class="r" id="profile-role">—</div>
+          </div>
+          <div class="section-title" data-i18n="preferences">Preferences</div>
+          <div class="card">
+            <div class="list-row">
+              <span data-i18n="language">Language</span>
+              <span id="profile-lang">English</span>
+            </div>
+            <div class="list-row">
+              <span data-i18n="voiceReplies">Speak replies aloud</span>
+              <input type="checkbox" id="voice-toggle" checked />
+            </div>
+          </div>
+          <button class="btn-secondary profile-signout" id="logout-btn" data-i18n="signOut">Sign out</button>
+        </div>
+
+      </div>
+
+      <!-- bottom nav (mobile only) -->
+      <div class="bottom-nav">
+        <button class="nav-btn active" data-view="home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+          <span data-i18n="home">Home</span>
+        </button>
+        <button class="nav-btn" data-view="chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-1 4.1 8.5 8.5 0 0 1-7.6 4.6 8.4 8.4 0 0 1-4.1-1L3 21l1.8-5.3a8.4 8.4 0 0 1-1-4.2 8.5 8.5 0 0 1 4.6-7.6 8.4 8.4 0 0 1 4.1-1h.5a8.48 8.48 0 0 1 8 8v.6z"/></svg>
+          <span data-i18n="chat">Chat</span>
+        </button>
+        <button class="nav-btn" data-view="profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          <span data-i18n="profile">Profile</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script src="config.js"></script>
+<script src="i18n.js"></script>
+<script src="app.js?v=contacts-20260819"></script>
+</body>
+</html>
