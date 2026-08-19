@@ -1,0 +1,24 @@
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+sqlalchemy==2.0.35
+pydantic==2.9.2
+bcrypt==4.2.0
+pyjwt==2.9.0
+python-dotenv==1.0.1
+httpx==0.27.2
+
+# Local voice: ai4bharat/indic-parler-tts (see backend/tts.py). Installs the
+# CPU build of torch by default; for GPU-accelerated (much faster)
+# synthesis, install a CUDA build of torch matching your hardware from
+# https://pytorch.org/get-started/locally/ *before* running `pip install -r`
+# a second time, or it'll be left in place rather than downgraded.
+torch>=2.2
+transformers>=4.46.1
+soundfile>=0.12.1
+git+https://github.com/huggingface/parler-tts.git
+
+# Spells digits out as words before they reach the TTS model (see
+# _normalize_for_speech / _expand_numbers in tts.py) - without this,
+# numbers embedded mid-sentence ("class 10", "85% attendance") get read
+# digit-by-digit or dropped entirely.
+num2words>=0.5.13
